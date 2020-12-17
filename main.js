@@ -14,7 +14,14 @@ const mockUpStrand = () => {
 };
 
 
-
+// factory function for objects
+function pAequorFactory(number, dna){
+  const organism = {
+    specimennum: number,
+    dna: dna
+  }
+  return organismn;
+}
 
 
 
