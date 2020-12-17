@@ -15,14 +15,25 @@ const mockUpStrand = () => {
 
 
 // factory function for objects
-function pAequorFactory(number, dna){
-  const organism = {
-    specimennum: number,
-    dna: dna
+const pAequorFactory = (number, dna) => {
+    return{
+      specimennum: number,
+      dna: dna,
+      mutate: function(){
+      const mutateBase = Math.floor(Math.random) * 15;
+      const randDnaBase = returnRandBase;
+      do{
+        const newBase = returnRandBase();
+        return newBase;
+      }
+      while(this.dna[mutateBase] === newBase);
+      
+    }
+    
   }
-  return organismn;
 }
 
+console.log(pAequorFactory(1, mockUpStrand()));
 
 
 
