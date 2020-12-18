@@ -20,21 +20,42 @@ const pAequorFactory = (number, dna) => {
       specimennum: number,
       dna: dna,
       mutate: function(){
-      const mutateBase = Math.floor(Math.random) * 15;
-      const randDnaBase = returnRandBase;
-      do{
+        // hier wird zufällig ein Index berechnet
+        // dieser index ist die Stelle im DNA array die geändert werden soll
+        const mutateIndex = (Math.floor(Math.random() * 15) - 1);
+
+        // 
         const newBase = returnRandBase();
-        return newBase;
+        // console.log("mutateIndex:")
+        // console.log(mutateIndex)
+
+        // console.log("newBase:")
+        // console.log(newBase)
+
+        // console.log("this.dna:")
+        // console.log(this.dna);
+        
+        // while()-versuch
+        while(newBase === this.dna[mutateIndex]){
+          newBase = returnRandBase();
+          return newBase;
+        }
+
+        const newDna = this.dna;
+        newDna[mutateIndex] = newBase;
+        // console.log("New DNA:");
+        // console.log(newDna);
+
+        // console.log("this DNA:")
+        // console.log(this.dna);
+
+        return newDna;
       }
-      while(this.dna[mutateBase] === newBase);
-      
     }
-    
-  }
 }
 
-console.log(pAequorFactory(1, mockUpStrand()));
+const test = pAequorFactory(1, mockUpStrand());
+console.log(test);
 
-
-
-
+const test_02 = test.mutate();
+console.log(test_02);
