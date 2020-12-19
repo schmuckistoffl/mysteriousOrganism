@@ -52,7 +52,7 @@ const pAequorFactory = (number, dna) => {
       compareDNA: function(pAequor){
         let count = 0;
         for(let i = 0; i<this.dna.length; i++){
-          if(pAequor[i] === this.dna[i]){
+          if(pAequor.dna[i] === this.dna[i]){
             count++;
           }
         }
@@ -65,12 +65,10 @@ const pAequorFactory = (number, dna) => {
 const test = pAequorFactory(1, mockUpStrand());
 console.log(test);
 
+const organism2 = pAequorFactory(2, mockUpStrand());
+console.log(organism2);
+
 const test_02 = test.mutate();
 console.log(test_02);
 
-test.compareDNA([
-  'T', 'A', 'C', 'T',
-  'C', 'A', 'C', 'T',
-  'A', 'G', 'C', 'A',
-  'A', 'G', 'A'      
-])
+test.compareDNA(organism2);
