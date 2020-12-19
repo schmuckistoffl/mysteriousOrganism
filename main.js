@@ -23,8 +23,6 @@ const pAequorFactory = (number, dna) => {
         // hier wird zufällig ein Index berechnet
         // dieser index ist die Stelle im DNA array die geändert werden soll
         const mutateIndex = (Math.floor(Math.random() * 15) - 1);
-
-        // 
         const newBase = returnRandBase();
         // console.log("mutateIndex:")
         // console.log(mutateIndex)
@@ -50,6 +48,9 @@ const pAequorFactory = (number, dna) => {
         // console.log(this.dna);
 
         return newDna;
+      },
+      compareDNA: function(){
+        
       }
     }
 }
