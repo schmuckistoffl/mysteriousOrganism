@@ -22,8 +22,8 @@ const pAequorFactory = (number, dna) => {
       mutate: function(){
         // hier wird zufällig ein Index berechnet
         // dieser index ist die Stelle im DNA array die geändert werden soll
-        const mutateIndex = (Math.floor(Math.random() * 15) - 1);
-        const newBase = returnRandBase();
+        const mutateIndex = (Math.floor(Math.random() * 15));
+        let newBase = returnRandBase();
         // console.log("mutateIndex:")
         // console.log(mutateIndex)
 
@@ -49,8 +49,15 @@ const pAequorFactory = (number, dna) => {
 
         return newDna;
       },
-      compareDNA: function(){
-        
+      compareDNA: function(pAequor){
+        let count = 0;
+        for(let i = 0; i<this.dna.length; i++){
+          if(pAequor[i] === this.dna[i]){
+            count++;
+          }
+        }
+        const percent = count * 100 / this.dna.length
+        console.log(`specimen#${this.specimennum} and specimen#${pAequor.specimennum} have ${percent}% DNA in common.`);
       }
     }
 }
@@ -60,3 +67,10 @@ console.log(test);
 
 const test_02 = test.mutate();
 console.log(test_02);
+
+test.compareDNA([
+  'T', 'A', 'C', 'T',
+  'C', 'A', 'C', 'T',
+  'A', 'G', 'C', 'A',
+  'A', 'G', 'A'      
+])
