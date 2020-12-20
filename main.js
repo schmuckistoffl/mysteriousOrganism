@@ -58,8 +58,24 @@ const pAequorFactory = (number, dna) => {
         }
         const percent = count * 100 / this.dna.length
         console.log(`specimen#${this.specimennum} and specimen#${pAequor.specimennum} have ${percent}% DNA in common.`);
+      },
+      willLikelySurvive: function(){
+        let survivePercentage = this.dna.filter(helperWillLikelySurvive)
+        // pre-integration test
+        console.log(survivePercentage);
+        console.log(survivePercentage.length);
+        if(survivePercentage.length * 100 / this.dna.length >= 60){
+          return true;
+        }
+        else{
+          return false;
+        }
       }
     }
+}
+
+function helperWillLikelySurvive(item){
+  return item === 'C' || item === 'G';
 }
 
 const test = pAequorFactory(1, mockUpStrand());
@@ -72,3 +88,5 @@ const test_02 = test.mutate();
 console.log(test_02);
 
 test.compareDNA(organism2);
+
+console.log(organism2.willLikelySurvive());
