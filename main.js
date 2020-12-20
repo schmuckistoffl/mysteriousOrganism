@@ -24,15 +24,7 @@ const pAequorFactory = (number, dna) => {
         // dieser index ist die Stelle im DNA array die geändert werden soll
         const mutateIndex = (Math.floor(Math.random() * 15));
         let newBase = returnRandBase();
-        // console.log("mutateIndex:")
-        // console.log(mutateIndex)
-
-        // console.log("newBase:")
-        // console.log(newBase)
-
-        // console.log("this.dna:")
-        // console.log(this.dna);
-        
+               
         // while()-versuch
         while(newBase === this.dna[mutateIndex]){
           newBase = returnRandBase();
@@ -58,8 +50,24 @@ const pAequorFactory = (number, dna) => {
         }
         const percent = count * 100 / this.dna.length
         console.log(`specimen#${this.specimennum} and specimen#${pAequor.specimennum} have ${percent}% DNA in common.`);
+      },
+      willLikelySurvive: function(){
+        let survivePercentage = this.dna.filter(helperWillLikelySurvive)
+        // pre-integration test
+        console.log(survivePercentage);
+        console.log(survivePercentage.length);
+        if(survivePercentage.length * 100 / this.dna.length >= 60){
+          return true;
+        }
+        else{
+          return false;
+        }
       }
     }
+}
+
+function helperWillLikelySurvive(item){
+  return item === 'C' || item === 'G';
 }
 
 const test = pAequorFactory(1, mockUpStrand());
@@ -83,6 +91,9 @@ function createSample(){
   const sample = helpArray.map(function(item){
     let name = "pAequor"+item;
     const newOrganism = pAequorFactory(item,mockUpStrand());
-    while(!newOrganism.willLi)
+    while(!newOrganism.willLikelySurvive){
+      newOrganism.dna = newOrganism.dna.mutate();
+    }
+    return newOrganism;
   })
 }
