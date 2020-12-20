@@ -96,4 +96,7 @@ function createSample(){
     }
     return newOrganism;
   })
+  return sample;
 }
+
+createSample();
