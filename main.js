@@ -52,7 +52,7 @@ const pAequorFactory = (number, dna) => {
         console.log(`specimen#${this.specimennum} and specimen#${pAequor.specimennum} have ${percent}% DNA in common.`);
       },
       willLikelySurvive: function(){
-        let survivePercentage = this.dna.filter(helperWillLikelySurvive)
+        let survivePercentage = this.dna.filter(helperWillLikelySurvive);
         // pre-integration test
         console.log(survivePercentage);
         console.log(survivePercentage.length);
@@ -81,6 +81,8 @@ console.log(test_02);
 
 test.compareDNA(organism2);
 
+console.log(test.willLikelySurvive());
+
 
 function createSample(){
   let helpArray = [];
@@ -91,12 +93,14 @@ function createSample(){
   const sample = helpArray.map(function(item){
     let name = "pAequor"+item;
     const newOrganism = pAequorFactory(item,mockUpStrand());
-    while(!newOrganism.willLikelySurvive){
-      newOrganism.dna = newOrganism.dna.mutate();
+    while(newOrganism.willLikelySurvive()===false){
+      newOrganism.dna = newOrganism.mutate();
     }
     return newOrganism;
   })
   return sample;
 }
 
-createSample();
+ const sample = createSample();
+// console.log(sample);
+
