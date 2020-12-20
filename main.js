@@ -72,3 +72,17 @@ const test_02 = test.mutate();
 console.log(test_02);
 
 test.compareDNA(organism2);
+
+
+function createSample(){
+  let helpArray = [];
+  for(let n = 1; n <= 30; n++){
+    helpArray.push(n);
+  }
+
+  const sample = helpArray.map(function(item){
+    let name = "pAequor"+item;
+    const newOrganism = pAequorFactory(item,mockUpStrand());
+    while(!newOrganism.willLi)
+  })
+}
